@@ -1,4 +1,4 @@
-# geisler-commons
+﻿# vision-commons
 
 Shared MATLAB code for the Geisler Lab vision-science projects. Consumed as a **git submodule** by
 `texture-learning`, `texture-segmentation`, and `camouflage_detection`, so that common code lives in
@@ -22,13 +22,13 @@ Add the repo root (the folder containing the `+package` dirs) to the MATLAB path
 project ships a `setup.m` that does this, e.g.:
 
 ```matlab
-addpath(fullfile(repo_root, 'geisler-commons'));   % exposes vislib.*, nat_stat_bayes.*, etc.
+addpath(fullfile(repo_root, 'vision-commons'));   % exposes vislib.*, nat_stat_bayes.*, etc.
 ```
 
 ## External dependencies
 
 - [IntClassNorm](https://github.com/abhranildas/Integrate-and-Classify-Normal-Distributions)
-  (`classify_normals`, `quad2fun`) — used by the Bayesian decision-variable code; itself depends on
+  (`classify_normals`, `quad2fun`) â€” used by the Bayesian decision-variable code; itself depends on
   the generalized chi-square package `gx2`.
 - MATLAB toolboxes used by parts of `+vislib`: Image Processing, Statistics & Machine Learning,
   DSP System, Parallel Computing.
