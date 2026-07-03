@@ -3,3 +3,4 @@
 %
 % Call functions as nat_stat_bayes.<function>. Requires vision-commons on the MATLAB path (see each project's setup.m).
 
+
