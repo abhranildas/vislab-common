@@ -30,7 +30,7 @@ function border = dv_border(patch_a, patch_b, patch_size, direction, sd, nsd, sh
     if nargin < 7 || isempty(show), show = false; end
 
     border = zeros(1, 3);
-    [k_horiz, k_vert] = vislib.deriv_gauss1_kernels(sd, nsd);
+    [k_horiz, k_vert] = vislib.steerable_kernels(sd, nsd);
     psz2 = 2 * patch_size;
 
     if direction == 1                       % patch_b below patch_a

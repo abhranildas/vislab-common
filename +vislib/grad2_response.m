@@ -16,11 +16,11 @@ function [magnitude, orientation] = grad2_response(patch, sd, nsd)
 %     magnitude   - steered |response| magnitude map (cropped).
 %     orientation - orientation of maximum response, degrees (cropped).
 %
-%   See also VISLIB.DERIV_GAUSS2_KERNELS, VISLIB.GRAD1_RESPONSE.
+%   See also VISLIB.GAUSS_DERIV2_KERNELS, VISLIB.STEERABLE_GRAD_RESPONSE.
 
     [sz, ~] = size(patch);
     crop = floor(sd * nsd / 2 + 1);
-    [k0, k45, k90] = vislib.deriv_gauss2_kernels(sd, nsd);
+    [k0, k45, k90] = vislib.gauss_deriv2_kernels(sd, nsd);
     r0  = conv2(patch, k0,  'same');
     r45 = conv2(patch, k45, 'same');
     r90 = conv2(patch, k90, 'same');

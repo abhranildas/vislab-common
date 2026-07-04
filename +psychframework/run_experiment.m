@@ -1,6 +1,6 @@
 function SessionData = run_experiment(ExpSettings, hooks)
-% PSYCHEXP.RUN_EXPERIMENT  Shared Psychtoolbox experiment runner.
-%   SessionData = psychexp.run_experiment(ExpSettings, hooks)
+% PSYCHFRAMEWORK.RUN_EXPERIMENT  Shared Psychtoolbox experiment runner.
+%   SessionData = psychframework.run_experiment(ExpSettings, hooks)
 %
 %   Generic session -> level -> trial loop shared by the lab's Psychtoolbox
 %   experiments (camouflage_detection, texture-segmentation). It owns the
@@ -82,7 +82,7 @@ function SessionData = run_experiment(ExpSettings, hooks)
         hooks.level_start(S, level);
 
         for trial = 1:nTrials
-            [response(trial, level), rt(trial, level)] = psychexp.run_trial(S, hooks, trial, level);
+            [response(trial, level), rt(trial, level)] = psychframework.run_trial(S, hooks, trial, level);
         end
 
         hooks.save_level(S, response(:, level), level);
@@ -105,7 +105,7 @@ end
 function require_hooks(hooks, names)
     for i = 1:numel(names)
         if ~isfield(hooks, names{i}) || ~isa(hooks.(names{i}), 'function_handle')
-            error('psychexp:run_experiment:missingHook', ...
+            error('psychframework:run_experiment:missingHook', ...
                 'hooks.%s is required and must be a function handle.', names{i});
         end
     end

@@ -1,6 +1,6 @@
-function [magnitude, orientation] = grad1_response(patch, sd, nsd)
-% GRAD1_RESPONSE  First-derivative steerable response (magnitude & orientation).
-%   [magnitude, orientation] = vislib.grad1_response(patch, sd, nsd)
+function [magnitude, orientation] = steerable_grad_response(patch, sd, nsd)
+% STEERABLE_GRAD_RESPONSE  First-derivative steerable response (magnitude & orientation).
+%   [magnitude, orientation] = vislib.steerable_grad_response(patch, sd, nsd)
 %
 %   Convolves the patch with the horizontal/vertical first-derivative-of-Gaussian
 %   kernels and steers to the orientation of maximum response at each pixel,
@@ -16,11 +16,11 @@ function [magnitude, orientation] = grad1_response(patch, sd, nsd)
 %     magnitude   - steered response magnitude map (cropped).
 %     orientation - orientation of maximum response, degrees (cropped).
 %
-%   See also VISLIB.DERIV_GAUSS1_KERNELS, VISLIB.GRAD2_RESPONSE.
+%   See also VISLIB.STEERABLE_KERNELS, VISLIB.GRAD2_RESPONSE.
 
     [sz, ~] = size(patch);
     crop = floor(sd * nsd / 2 + 1);
-    [k_horiz, k_vert] = vislib.deriv_gauss1_kernels(sd, nsd);
+    [k_horiz, k_vert] = vislib.steerable_kernels(sd, nsd);
     resp_h = conv2(patch, k_horiz, 'same');
     resp_v = conv2(patch, k_vert,  'same');
     orientation = atan2d(resp_h, resp_v);

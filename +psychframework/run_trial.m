@@ -1,10 +1,10 @@
 function [response, rt] = run_trial(S, hooks, trial, level)
-% PSYCHEXP.RUN_TRIAL  One trial: fixation -> stimulus -> response -> feedback.
-%   [response, rt] = psychexp.run_trial(S, hooks, trial, level)
+% PSYCHFRAMEWORK.RUN_TRIAL  One trial: fixation -> stimulus -> response -> feedback.
+%   [response, rt] = psychframework.run_trial(S, hooks, trial, level)
 %
 %   Runs the four trial phases via the caller's hooks, optionally wrapped by
 %   trial_pre / trial_post (e.g. an EyeLink start-recording / trial-result layer).
-%   Called by psychexp.run_experiment; see its help for the hooks contract.
+%   Called by psychframework.run_experiment; see its help for the hooks contract.
 %
 %   Returns the trial response and reaction time from hooks.response.
 

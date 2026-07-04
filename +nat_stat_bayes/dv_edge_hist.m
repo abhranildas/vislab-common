@@ -33,8 +33,8 @@ function edge_llr = dv_edge_hist(patch_a, patch_b, thresh, bin_bounds, n_bins, s
     edge_llr = zeros(1, numel(feature_list));
 
     % steerable responses: 1st derivative (edges) and 2nd derivative (bars)
-    [mag1_a, ori1_a] = vislib.grad1_response(patch_a, sd1, nsd1);
-    [mag1_b, ori1_b] = vislib.grad1_response(patch_b, sd1, nsd1);
+    [mag1_a, ori1_a] = vislib.steerable_grad_response(patch_a, sd1, nsd1);
+    [mag1_b, ori1_b] = vislib.steerable_grad_response(patch_b, sd1, nsd1);
     [mag2_a, ori2_a] = vislib.grad2_response(patch_a, sd2, nsd2);
     [mag2_b, ori2_b] = vislib.grad2_response(patch_b, sd2, nsd2);
     npix1 = numel(mag1_a);

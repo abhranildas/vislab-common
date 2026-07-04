@@ -1,6 +1,6 @@
-function [k_horiz, k_vert] = deriv_gauss1_kernels(sd, nsd)
-% DERIV_GAUSS1_KERNELS  First-derivative-of-Gaussian steerable basis kernels.
-%   [k_horiz, k_vert] = vislib.deriv_gauss1_kernels(sd, nsd)
+function [k_horiz, k_vert] = steerable_kernels(sd, nsd)
+% STEERABLE_KERNELS  First-derivative-of-Gaussian steerable basis kernels.
+%   [k_horiz, k_vert] = vislib.steerable_kernels(sd, nsd)
 %
 %   Returns the horizontal and vertical first-derivative-of-Gaussian kernels
 %   (the steerable basis G1^0, G1^90); steer to any orientation via
@@ -14,7 +14,7 @@ function [k_horiz, k_vert] = deriv_gauss1_kernels(sd, nsd)
 %   Outputs
 %     k_horiz, k_vert - [sz x sz] basis kernels, sz = nsd*sd, unit energy.
 %
-%   See also VISLIB.GRAD1_RESPONSE, VISLIB.DERIV_GAUSS2_KERNELS.
+%   See also VISLIB.STEERABLE_GRAD_RESPONSE, VISLIB.GAUSS_DERIV2_KERNELS.
 
     sz       = nsd * sd;
     center   = (sz + 1) / 2;
