@@ -6,7 +6,7 @@ function img_out = downsample(img, factor)
 %   factor-of-two step blurs with a small Gaussian kernel and then decimates by
 %   nearest-neighbor (minimizing aliasing while keeping the resolution loss
 %   accurate). Numerically identical to texture-learning's dsmp, generalized to
-%   any number of channels (replaces its 4x-duplicated per-level blocks and the
+%   any number of channels (replaces its 4x-duplicated per-eccentricity blocks and the
 %   grayscale-only texseg downsample).
 %
 %   Inputs
