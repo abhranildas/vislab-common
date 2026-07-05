@@ -1,6 +1,6 @@
 function response = center_surround(patch, surround_width, cs_type)
 % CENTER_SURROUND  Center-surround filter response of a patch.
-%   response = vislib.center_surround(patch, surround_width, cs_type)
+%   response = vislab.lib.center_surround(patch, surround_width, cs_type)
 %
 %   Applies a center-surround filter and returns the cropped response.
 %   (Was cen_sur.m in texture-learning.)
@@ -54,6 +54,6 @@ function response = center_surround(patch, surround_width, cs_type)
             response = cs(keep, keep);
 
         otherwise
-            error('vislib:center_surround:badType', 'cs_type must be 1-4, got %g.', cs_type);
+            error('vislab:lib:center_surround:badType', 'cs_type must be 1-4, got %g.', cs_type);
     end
 end

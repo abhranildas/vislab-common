@@ -1,6 +1,6 @@
 function patch_out = cntrst_norm(patch, target_contrast, patch_size)
 % CNTRST_NORM  Normalize a patch to a target RMS contrast about its mean.
-%   patch_out = vislib.cntrst_norm(patch, target_contrast, patch_size)
+%   patch_out = vislab.lib.cntrst_norm(patch, target_contrast, patch_size)
 %
 %   Rescales the fluctuations of a (grayscale) patch so their RMS relative to
 %   the patch mean equals target_contrast, leaving the mean unchanged.
@@ -14,7 +14,7 @@ function patch_out = cntrst_norm(patch, target_contrast, patch_size)
 %   Output
 %     patch_out - contrast-normalized patch, same size as patch.
 %
-%   See also VISLIB.PTCH_NORM.
+%   See also vislab.lib.PTCH_NORM.
 
     if nargin < 3 || isempty(patch_size)
         patch_size = size(patch, 1);

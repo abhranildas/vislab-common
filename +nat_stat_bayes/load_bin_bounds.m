@@ -1,6 +1,6 @@
 function [n_bins, bin_bounds] = load_bin_bounds(feature_btype, ecc, filter)
 % LOAD_BIN_BOUNDS  Load per-feature adaptive-histogram bin bounds from disk.
-%   [n_bins, bin_bounds] = nat_stat_bayes.load_bin_bounds(feature_btype, ecc, filter)
+%   [n_bins, bin_bounds] = vislab.nat_stat_bayes.load_bin_bounds(feature_btype, ecc, filter)
 %
 %   Loads the precomputed histogram bin bounds for each feature dimension. (Was
 %   mk_bb.m.) The bounds used to live in one file per feature/eccentricity
@@ -28,7 +28,7 @@ function [n_bins, bin_bounds] = load_bin_bounds(feature_btype, ecc, filter)
 %     n_bins     - 1 x n_features vector of the number of bin bounds per feature.
 %     bin_bounds - n_features x max_bins matrix; row f holds bin_bounds(f,1:n_bins(f)).
 %
-%   See also NAT_STAT_BAYES.DV_SPOT_HIST, NAT_STAT_BAYES.DV_EDGE_HIST.
+%   See also vislab.nat_stat_bayes.DV_SPOT_HIST, vislab.nat_stat_bayes.DV_EDGE_HIST.
 
     if filter == 0
         file = 'AHE_bins.mat';

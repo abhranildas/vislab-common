@@ -1,7 +1,7 @@
 # Lab vision-science code: architecture
 
-How the lab's texture / camouflage projects, the shared `vision-commons` library, the external
-toolboxes, and the shared data store fit together. This document lives in `vision-commons` (the shared
+How the lab's texture / camouflage projects, the shared `vislab` library, the external
+toolboxes, and the shared data store fit together. This document lives in `vislab` (the shared
 hub) and is referenced from each project's README.
 
 ## Dependency graph
@@ -10,10 +10,10 @@ hub) and is referenced from each project's README.
    gx2  ────────────►  IntClassNorm  ─────────────────────────────────────┐
    (add-on toolbox)    (add-on toolbox: classify_normals, quad2fun)        │  used by the model code of
                                                                            ▼  all project repos
-                         vision-commons  (sibling folder)
-                           +vislib          general vision / numerical utilities
-                           +nat_stat_bayes  natural-scene-stats + Bayesian-observer DVs
-                           +psychframework  Psychtoolbox experiment harness
+                         +vislab  (sibling folder; the repo IS the +vislab package)
+                           vislab.lib              general vision / numerical utilities
+                           vislab.nat_stat_bayes   natural-scene-stats + Bayesian-observer DVs
+                           vislab.psychframework   Psychtoolbox experiment harness
                                  │  on the MATLAB path via each project's setup.m
              ┌───────────────────┼────────────────────────────┐
              ▼                   ▼                             ▼
@@ -21,7 +21,7 @@ hub) and is referenced from each project's README.
    (edge-power detection;  (Geisler & Das seg. paper;   (Geisler proximity paper;
     PTB experiments)        PTB experiments + models)    proximity-trained DVs + segmentation)
 
-   global_data/  (natural images, texture sheets, large CDFs) — external store,
+   vislab_data/  (natural images, texture sheets, large CDFs) — external store,
                  referenced by each repo's config; NOT in any code repo.
 ```
 
@@ -35,18 +35,19 @@ hub) and is referenced from each project's README.
 Both are installed via the MATLAB **Add-On Explorer / File Exchange**. Project `setup.m` scripts only
 *verify* they are installed — they are never added as source paths or bundled.
 
-### vision-commons (this repo, a sibling folder next to each project)
-The single home for code shared across projects. MATLAB namespace packages (call as `pkg.function`):
+### vislab (this repo, a sibling folder next to each project)
+The single home for code shared across projects. One MATLAB namespace package, `vislab`, with three
+subpackages (call as `vislab.<subpackage>.<function>`):
 
-| Package | Purpose | Used by |
-|---|---|---|
-| `+vislib` | Optics (OTF), CSF, steerable/DoG/LoG filters, noise, downsample, patch/contrast normalization, colour conversion, sample statistics, image math | all |
-| `+nat_stat_bayes` | Natural-scene-statistics + Bayesian-observer toolkit: PCA/efficient-coding transforms, CDF & adaptive-histogram bin learning, likelihood-ratio decision variables (power, spot, edge, border) | all |
-| `+psychframework` | Psychtoolbox experiment harness (trial/interval/feedback, session I/O) | camouflage, texture-seg |
+| Subpackage | Call as | Purpose | Used by |
+|---|---|---|---|
+| `+vislab/+lib` | `vislab.lib.*` | Optics (OTF), CSF, steerable/DoG/LoG filters, noise, downsample, patch/contrast normalization, colour conversion, sample statistics, image math | all |
+| `+vislab/+nat_stat_bayes` | `vislab.nat_stat_bayes.*` | Natural-scene-statistics + Bayesian-observer toolkit: PCA/efficient-coding transforms, CDF & adaptive-histogram bin learning, likelihood-ratio decision variables (power, spot, edge, border, spatial) | all |
+| `+vislab/+psychframework` | `vislab.psychframework.*` | Psychtoolbox experiment harness (trial/interval/feedback, session I/O) | camouflage, texture-seg |
 
 Only genuinely cross-project code lives here. Project-specific code (e.g. the texture-segmentation
 grouping algorithm, GTR generation) stays in its own repo, and may be promoted here later if it turns
-out to be shared.
+out to be shared. A project's own local `+lib` (`lib.*`) is a separate, project-scoped namespace.
 
 ### Project repos
 - **camouflage_detection** — camouflage/target detection: edge-power ideal observer + PTB experiments.
@@ -54,19 +55,21 @@ out to be shared.
 - **texture-learning** — Geisler proximity paper: proximity-proxy training of texture-discrimination
   decision variables, applied to GTR segmentation.
 
-### global_data (external data store)
+### vislab_data (external data store)
 Natural images (`CPS natural images/`), texture sheets (`textures/`), and large derived data (e.g.
 natural-image CDFs). Too large for git; each repo's `config.m` points at it via a single data-root path.
 
 ## Consumption model
 
-- **vision-commons = a sibling folder** next to each project (one shared copy, not vendored inside
-  any repo). Each project's `setup.m` finds `../vision-commons`, and auto-clones it there if it's
-  missing (needs git + network) — so a standalone project clone works after running `setup`.
+- **vislab = a sibling folder** next to each project (one shared copy, not vendored inside
+  any repo). The repo folder **is** the `+vislab` package, so `setup.m` finds `../+vislab` and puts its
+  **parent** on the path (so `vislab.*` resolves); it auto-clones it there if it's missing (needs git +
+  network) — so a standalone project clone works after running `setup`. (On GitHub the repo is `vislab`;
+  clone into a folder named `+vislab`.)
 - **IntClassNorm + gx2 = installed toolboxes** (see above).
-- **global_data = external**, referenced by config; not in git.
+- **vislab_data = external**, referenced by config; not in git.
 
 ## Adding a new project
-1. Ensure `vision-commons` sits next to the repo (each `setup.m` auto-fetches it if missing).
+1. Ensure `vislab` sits next to the repo (each `setup.m` auto-fetches it if missing).
 2. Copy the `setup.m` / `config.m` pattern (path bootstrap + toolbox verification + data root).
-3. Put only project-specific code in the repo; call shared code as `vislib.*` / `nat_stat_bayes.*`.
+3. Put only project-specific code in the repo; call shared code as `vislab.lib.*` / `vislab.nat_stat_bayes.*`.

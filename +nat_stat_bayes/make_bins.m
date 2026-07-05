@@ -1,6 +1,6 @@
 function [bin_edges, edge_indices] = make_bins(cdf_x, cdf_p, n_bins)
 % MAKE_BINS  Equal-probability histogram bin edges from a CDF (efficient coding).
-%   [bin_edges, edge_indices] = nat_stat_bayes.make_bins(cdf_x, cdf_p, n_bins)
+%   [bin_edges, edge_indices] = vislab.nat_stat_bayes.make_bins(cdf_x, cdf_p, n_bins)
 %
 %   Places bin edges at equal steps of cumulative probability (1/n_bins apart),
 %   i.e. histogram equalization of the prior feature distribution. If several
@@ -17,7 +17,7 @@ function [bin_edges, edge_indices] = make_bins(cdf_x, cdf_p, n_bins)
 %     bin_edges    - bin edges (first -inf, last inf), length (final n_bins)+1.
 %     edge_indices - indices into the CDF for each edge.
 %
-%   See also NAT_STAT_BAYES.FIND_BIN_BOUND.
+%   See also vislab.nat_stat_bayes.FIND_BIN_BOUND.
 
     [~, ncdf] = size(cdf_x);
     n_edges = 1;

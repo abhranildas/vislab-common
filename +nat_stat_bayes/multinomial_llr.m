@@ -1,6 +1,6 @@
 function llr = multinomial_llr(counts_a, counts_b)
 % MULTINOMIAL_LLR  Multinomial log-likelihood ratio, different vs same.
-%   llr = nat_stat_bayes.multinomial_llr(counts_a, counts_b)
+%   llr = vislab.nat_stat_bayes.multinomial_llr(counts_a, counts_b)
 %
 %   Implements the histogram decision variable of the HBO model (paper Eq. 1,
 %   derived as Eq. A4): given the per-bin histogram counts of a feature in two
@@ -14,7 +14,7 @@ function llr = multinomial_llr(counts_a, counts_b)
 %   Output
 %     llr - log-likelihood ratio (>= 0). Paper symbol: ln L_h (spot/histogram DV).
 %
-%   See also NAT_STAT_BAYES.DV_SPOT_HIST, NAT_STAT_BAYES.DV_EDGE_HIST.
+%   See also vislab.nat_stat_bayes.DV_SPOT_HIST, vislab.nat_stat_bayes.DV_EDGE_HIST.
 
     a = counts_a(:);
     b = counts_b(:);

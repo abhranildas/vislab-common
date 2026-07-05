@@ -1,6 +1,6 @@
 function img_out = downsample(img, factor)
 % DOWNSAMPLE  Blur with a 3x3 Gaussian and halve, repeated log2(factor) times.
-%   img_out = vislib.downsample(img, factor)
+%   img_out = vislab.lib.downsample(img, factor)
 %
 %   Models the drop in sampling resolution with retinal eccentricity: each
 %   factor-of-two step blurs with a small Gaussian kernel and then decimates by
@@ -19,7 +19,7 @@ function img_out = downsample(img, factor)
 
     n_halvings = log2(factor);
     if mod(n_halvings, 1) ~= 0 || factor < 1
-        error('vislib:downsample:badFactor', 'factor must be a power of two >= 1, got %g.', factor);
+        error('vislab:lib:downsample:badFactor', 'factor must be a power of two >= 1, got %g.', factor);
     end
 
     kernel = [1/16 1/8 1/16; 1/8 1/4 1/8; 1/16 1/8 1/16];   % small Gaussian blur

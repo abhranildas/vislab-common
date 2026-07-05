@@ -1,6 +1,6 @@
 function otf = watson_otf(spatial_freq, pupil_diameter, wavelength)
 % WATSON_OTF  Watson's descriptive optical transfer function of the human eye.
-%   otf = vislib.watson_otf(spatial_freq, pupil_diameter, wavelength)
+%   otf = vislab.lib.watson_otf(spatial_freq, pupil_diameter, wavelength)
 %
 %   Descriptive MTF/OTF of the average human eye (Watson 2013, J. Vision).
 %
@@ -12,9 +12,9 @@ function otf = watson_otf(spatial_freq, pupil_diameter, wavelength)
 %   Output
 %     otf - optical modulation at each spatial frequency (same size as input).
 %           Undefined (complex/NaN) beyond the diffraction cutoff u0, where
-%           acos(u/u0) is complex; callers (e.g. vislib.otf_filter) zero it there.
+%           acos(u/u0) is complex; callers (e.g. vislab.lib.otf_filter) zero it there.
 %
-%   See also VISLIB.OTF_FILTER.
+%   See also vislab.lib.OTF_FILTER.
 
     cutoff = pupil_diameter * pi * 1e6 / (wavelength * 180);   % diffraction cutoff u0 (c/deg)
     uh = spatial_freq / cutoff;

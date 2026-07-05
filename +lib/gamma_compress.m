@@ -1,8 +1,8 @@
 function img_gc = gamma_compress(img_lin, gamma_value)
 % GAMMA_COMPRESS  Linear RGB -> gamma-compressed (Adobe gamma).
-%   img_gc = vislib.gamma_compress(img_lin, gamma_value)
+%   img_gc = vislab.lib.gamma_compress(img_lin, gamma_value)
 %
-%   Inverse of vislib.gamma_expand. Operates on an array of any shape/channel
+%   Inverse of vislab.lib.gamma_expand. Operates on an array of any shape/channel
 %   count (vectorized; replaces the per-channel copy in adobe_compress).
 %
 %   Inputs
@@ -12,7 +12,7 @@ function img_gc = gamma_compress(img_lin, gamma_value)
 %   Output
 %     img_gc - gamma-compressed image.
 %
-%   See also VISLIB.GAMMA_EXPAND.
+%   See also vislab.lib.GAMMA_EXPAND.
 
     if nargin < 2 || isempty(gamma_value)
         gamma_value = 2.19921875;          % Adobe RGB (1998) gamma

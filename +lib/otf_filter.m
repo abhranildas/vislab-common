@@ -1,6 +1,6 @@
 function img_filt = otf_filter(img, ppd, pupil_diameter, wavelength)
 % OTF_FILTER  Apply the human-eye optical transfer function to an image.
-%   img_filt = vislib.otf_filter(img, ppd, pupil_diameter, wavelength)
+%   img_filt = vislab.lib.otf_filter(img, ppd, pupil_diameter, wavelength)
 %
 %   Filters each channel in the frequency domain by Watson's OTF (approximate
 %   human eye optics). Vectorized; works for non-square/odd sizes and for 1- or
@@ -22,7 +22,7 @@ function img_filt = otf_filter(img, ppd, pupil_diameter, wavelength)
 %   Output
 %     img_filt - optically filtered image, same size as img.
 %
-%   See also VISLIB.WATSON_OTF.
+%   See also vislab.lib.WATSON_OTF.
 
     if nargin < 3 || isempty(pupil_diameter), pupil_diameter = 4;   end
     if nargin < 4 || isempty(wavelength),     wavelength     = 555; end
@@ -37,7 +37,7 @@ function img_filt = otf_filter(img, ppd, pupil_diameter, wavelength)
     fy = (yy - cy) * (ppd / n_rows);
     freq = sqrt(fx.^2 + fy.^2);
 
-    otf = vislib.watson_otf(freq, pupil_diameter, wavelength);
+    otf = vislab.lib.watson_otf(freq, pupil_diameter, wavelength);
     cutoff = pupil_diameter * pi * 1e6 / (wavelength * 180);
     otf(freq >= cutoff) = 0;                        % zero beyond diffraction cutoff
 

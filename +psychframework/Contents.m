@@ -25,7 +25,7 @@
 %     hooks.save_level   = @(S,resp,l)...;
 %     % optional: session_pre/post, level_pre/post, trial_pre/post, level_end
 %     %           (e.g. an EyeLink layer, gated by S.bFovea)
-%     data = psychframework.run_experiment(ExpSettings, hooks);
+%     data = vislab.psychframework.run_experiment(ExpSettings, hooks);
 %
 %   See run_experiment.m for the full hooks contract. The harness fixes the
 %   original's rt-matrix indexing bug (it stored rt(level,level)); everything

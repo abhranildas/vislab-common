@@ -1,6 +1,6 @@
 function llr = binomial_count_llr(count_a, count_b, n_max)
 % BINOMIAL_COUNT_LLR  Log-likelihood ratio for present/absent element counts.
-%   llr = nat_stat_bayes.binomial_count_llr(count_a, count_b, n_max)
+%   llr = vislab.nat_stat_bayes.binomial_count_llr(count_a, count_b, n_max)
 %
 %   Decision variable for the number of above-threshold edge (or bar) elements
 %   in two patches: the LLR that the two counts came from different vs the same
@@ -14,7 +14,7 @@ function llr = binomial_count_llr(count_a, count_b, n_max)
 %   Output
 %     llr - log-likelihood ratio.
 %
-%   See also NAT_STAT_BAYES.DV_EDGE_HIST.
+%   See also vislab.nat_stat_bayes.DV_EDGE_HIST.
 
     n1 = count_a;
     n2 = count_b;

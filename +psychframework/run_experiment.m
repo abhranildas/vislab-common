@@ -1,6 +1,6 @@
 function SessionData = run_experiment(ExpSettings, hooks)
-% PSYCHFRAMEWORK.RUN_EXPERIMENT  Shared Psychtoolbox experiment runner.
-%   SessionData = psychframework.run_experiment(ExpSettings, hooks)
+% vislab.psychframework.RUN_EXPERIMENT  Shared Psychtoolbox experiment runner.
+%   SessionData = vislab.psychframework.run_experiment(ExpSettings, hooks)
 %
 %   Generic session -> level -> trial loop shared by the lab's Psychtoolbox
 %   experiments (camouflage_detection, texture-segmentation). It owns the
@@ -82,7 +82,7 @@ function SessionData = run_experiment(ExpSettings, hooks)
         hooks.level_start(S, level);
 
         for trial = 1:nTrials
-            [response(trial, level), rt(trial, level)] = psychframework.run_trial(S, hooks, trial, level);
+            [response(trial, level), rt(trial, level)] = vislab.psychframework.run_trial(S, hooks, trial, level);
         end
 
         hooks.save_level(S, response(:, level), level);

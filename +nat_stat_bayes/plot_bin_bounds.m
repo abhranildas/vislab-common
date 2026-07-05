@@ -1,6 +1,6 @@
 function plot_bin_bounds(bounds, n_bounds, first, last, pad)
 % PLOT_BIN_BOUNDS  Diagnostic plots of histogram bin bounds.
-%   nat_stat_bayes.plot_bin_bounds(bounds, n_bounds, first, last, pad)
+%   vislab.nat_stat_bayes.plot_bin_bounds(bounds, n_bounds, first, last, pad)
 %
 %   Draws three diagnostic figures: bin bounds on a line, as stems, and bin
 %   width vs bin center. Visualization only. (Was plotbnds.m.)

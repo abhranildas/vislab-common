@@ -1,8 +1,8 @@
 function img_lin = gamma_expand(img_gc, gamma_value)
 % GAMMA_EXPAND  Gamma-compressed -> linear RGB (Adobe gamma).
-%   img_lin = vislib.gamma_expand(img_gc, gamma_value)
+%   img_lin = vislab.lib.gamma_expand(img_gc, gamma_value)
 %
-%   Inverse of vislib.gamma_compress. Linearizes a gamma-compressed image so
+%   Inverse of vislab.lib.gamma_compress. Linearizes a gamma-compressed image so
 %   that light-linear operations (optics, cone conversion) are valid. Operates
 %   on an array of any shape/channel count (replaces adobe_expand).
 %
@@ -13,7 +13,7 @@ function img_lin = gamma_expand(img_gc, gamma_value)
 %   Output
 %     img_lin - image in linear light (0..255 scale).
 %
-%   See also VISLIB.GAMMA_COMPRESS.
+%   See also vislab.lib.GAMMA_COMPRESS.
 
     if nargin < 2 || isempty(gamma_value)
         gamma_value = 2.19921875;          % Adobe RGB (1998) gamma

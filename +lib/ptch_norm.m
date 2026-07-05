@@ -1,6 +1,6 @@
 function [patch_out, channel_means] = ptch_norm(patch, target_mean, target_contrast, norm_type, n_channels)
 % PTCH_NORM  Normalize an image patch's mean and/or contrast.
-%   [patch_out, channel_means] = vislib.ptch_norm(patch, target_mean, ...
+%   [patch_out, channel_means] = vislab.lib.ptch_norm(patch, target_mean, ...
 %                                    target_contrast, norm_type, n_channels)
 %
 %   Rescales a patch to a target mean grey level (and optionally RMS contrast)
@@ -28,7 +28,7 @@ function [patch_out, channel_means] = ptch_norm(patch, target_mean, target_contr
 %     patch_out     - normalized patch, same size as patch.
 %     channel_means - 3x1 vector of original per-channel means (unused entries 0).
 %
-%   See also VISLIB.CNTRST_NORM.
+%   See also vislab.lib.CNTRST_NORM.
 
     if nargin < 5 || isempty(n_channels)
         n_channels = size(patch, 3);
@@ -65,6 +65,6 @@ function [patch_out, channel_means] = ptch_norm(patch, target_mean, target_contr
             patch_out = -(patch_out - target_mean) + target_mean;
 
         otherwise
-            error('vislib:ptch_norm:badNormType', 'norm_type must be 0-4, got %g.', norm_type);
+            error('vislab:lib:ptch_norm:badNormType', 'norm_type must be 0-4, got %g.', norm_type);
     end
 end

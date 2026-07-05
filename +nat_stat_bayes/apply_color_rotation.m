@@ -1,6 +1,6 @@
 function patch_out = apply_color_rotation(patch, rotation, patch_size)
 % APPLY_COLOR_ROTATION  Apply a 3x3 colour rotation to a patch (e.g. LMS->ABR).
-%   patch_out = nat_stat_bayes.apply_color_rotation(patch, rotation, patch_size)
+%   patch_out = vislab.nat_stat_bayes.apply_color_rotation(patch, rotation, patch_size)
 %
 %   Rotates each pixel's colour vector by the given 3x3 matrix. Used to map LMS
 %   cone responses into the PCA/opponent "ABR" (achromatic, blue-yellow,

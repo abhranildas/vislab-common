@@ -1,6 +1,6 @@
 function border = dv_border(patch_a, patch_b, patch_size, direction, sd, nsd, show)
 % DV_BORDER  Border decision variables between two adjacent patches.
-%   border = nat_stat_bayes.dv_border(patch_a, patch_b, patch_size, direction, sd, nsd, show)
+%   border = vislab.nat_stat_bayes.dv_border(patch_a, patch_b, patch_size, direction, sd, nsd, show)
 %
 %   Concatenates the two patches along their shared edge, filters with the
 %   first-derivative-of-Gaussian steerable kernels, and returns:
@@ -25,12 +25,12 @@ function border = dv_border(patch_a, patch_b, patch_size, direction, sd, nsd, sh
 %   preserved exactly from the original Rb.m; the intent is ambiguous (the "/"
 %   may have been meant as "./"), so it is flagged for Geisler rather than changed.
 %
-%   See also NAT_STAT_BAYES.XCORR_PATCHES, VISLIB.DERIV_GAUSS1_KERNELS.
+%   See also vislab.nat_stat_bayes.XCORR_PATCHES, vislab.lib.DERIV_GAUSS1_KERNELS.
 
     if nargin < 7 || isempty(show), show = false; end
 
     border = zeros(1, 3);
-    [k_horiz, k_vert] = vislib.steerable_kernels(sd, nsd);
+    [k_horiz, k_vert] = vislab.lib.steerable_kernels(sd, nsd);
     psz2 = 2 * patch_size;
 
     if direction == 1                       % patch_b below patch_a
@@ -57,5 +57,5 @@ function border = dv_border(patch_a, patch_b, patch_size, direction, sd, nsd, sh
     border(2) = (av1 + av2) / 2;
 
     % (3) spatial cross-correlation of the two patches
-    border(3) = nat_stat_bayes.xcorr_patches(patch_a, patch_b);
+    border(3) = vislab.nat_stat_bayes.xcorr_patches(patch_a, patch_b);
 end

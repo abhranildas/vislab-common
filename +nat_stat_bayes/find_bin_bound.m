@@ -1,6 +1,6 @@
 function [test_bounds, test_indices] = find_bin_bound(bounds, indices, n_bins, bin, cdf_x, cdf_p)
 % FIND_BIN_BOUND  Insert a candidate bin boundary at the CDF midpoint of a bin.
-%   [test_bounds, test_indices] = nat_stat_bayes.find_bin_bound(bounds, ...
+%   [test_bounds, test_indices] = vislab.nat_stat_bayes.find_bin_bound(bounds, ...
 %                                     indices, n_bins, bin, cdf_x, cdf_p)
 %
 %   Adaptive-histogram-equalization step: split the given bin at its
@@ -21,7 +21,7 @@ function [test_bounds, test_indices] = find_bin_bound(bounds, indices, n_bins, b
 %     test_bounds  - candidate bounds including the new one (length n_bins+2).
 %     test_indices - corresponding CDF indices.
 %
-%   See also NAT_STAT_BAYES.MAKE_BINS.
+%   See also vislab.nat_stat_bayes.MAKE_BINS.
 
     test_bounds  = zeros(1, n_bins + 2);
     test_indices = zeros(1, n_bins + 2);

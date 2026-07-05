@@ -1,6 +1,6 @@
 function [peak_xcorr, peak_index] = xcorr_patches(patch_a, patch_b)
 % XCORR_PATCHES  Normalized circular cross-correlation peak between two patches.
-%   [peak_xcorr, peak_index] = nat_stat_bayes.xcorr_patches(patch_a, patch_b)
+%   [peak_xcorr, peak_index] = vislab.nat_stat_bayes.xcorr_patches(patch_a, patch_b)
 %
 %   Whitens each patch's amplitude spectrum, cross-correlates them circularly
 %   via the FFT, and returns the peak (scaled by 1e4) and its linear index.
@@ -17,7 +17,7 @@ function [peak_xcorr, peak_index] = xcorr_patches(patch_a, patch_b)
 %     peak_xcorr - maximum normalized cross-correlation, scaled by 1e4.
 %     peak_index - linear index of the peak in the cross-correlation map.
 %
-%   See also NAT_STAT_BAYES.DV_BORDER.
+%   See also vislab.nat_stat_bayes.DV_BORDER.
 
     fa = whitened_spectrum(patch_a);
     fb = whitened_spectrum(patch_b);

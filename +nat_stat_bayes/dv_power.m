@@ -1,6 +1,6 @@
 function power_llr = dv_power(patch_a, patch_b, noise_suppress, patch_size)
 % DV_POWER  Power-spectrum decision variable between two patches.
-%   power_llr = nat_stat_bayes.dv_power(patch_a, patch_b, noise_suppress, patch_size)
+%   power_llr = vislab.nat_stat_bayes.dv_power(patch_a, patch_b, noise_suppress, patch_size)
 %
 %   The HBO power-spectrum log-likelihood ratio (paper: ln L_p). Each patch's
 %   normalized power spectrum is compared frequency by frequency; the DV is the
@@ -14,7 +14,7 @@ function power_llr = dv_power(patch_a, patch_b, noise_suppress, patch_size)
 %   Output
 %     power_llr - power-spectrum decision variable. Paper symbol: ln L_p.
 %
-%   See also NAT_STAT_BAYES.DV_SPOT_HIST, NAT_STAT_BAYES.DV_EDGE_HIST.
+%   See also vislab.nat_stat_bayes.DV_SPOT_HIST, vislab.nat_stat_bayes.DV_EDGE_HIST.
 
     spec_a = normalized_power(patch_a, noise_suppress);
     spec_b = normalized_power(patch_b, noise_suppress);

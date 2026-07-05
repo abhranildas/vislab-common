@@ -1,6 +1,6 @@
 function img_lms = rgb2lms(img_rgb, rgb_to_lms)
 % RGB2LMS  Convert a camera-RGB image to human LMS cone space.
-%   img_lms = vislib.rgb2lms(img_rgb, rgb_to_lms)
+%   img_lms = vislab.lib.rgb2lms(img_rgb, rgb_to_lms)
 %
 %   Applies a 3x3 camera-RGB -> LMS colour matrix to every pixel and clips
 %   negative cone responses to zero.
@@ -12,7 +12,7 @@ function img_lms = rgb2lms(img_rgb, rgb_to_lms)
 %   Output
 %     img_lms    - [H x W x 3] image in LMS cone space (non-negative).
 %
-%   See also VISLIB.PTCH_NORM.
+%   See also vislab.lib.PTCH_NORM.
 
     [n_rows, n_cols, n_channels] = size(img_rgb);
     pixels  = reshape(img_rgb, [], n_channels) * rgb_to_lms;  % transform each pixel

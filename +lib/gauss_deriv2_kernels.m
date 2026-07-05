@@ -1,6 +1,6 @@
 function [k0, k45, k90] = gauss_deriv2_kernels(sd, nsd)
 % GAUSS_DERIV2_KERNELS  Second-derivative-of-Gaussian steerable basis kernels.
-%   [k0, k45, k90] = vislib.gauss_deriv2_kernels(sd, nsd)
+%   [k0, k45, k90] = vislab.lib.gauss_deriv2_kernels(sd, nsd)
 %
 %   Returns the 0, 45 and 90 degree second-derivative-of-Gaussian kernels used
 %   as the steerable basis for bar/line responses. Each is zero-meaned and
@@ -15,7 +15,7 @@ function [k0, k45, k90] = gauss_deriv2_kernels(sd, nsd)
 %   Outputs
 %     k0, k45, k90 - [sz x sz] basis kernels, sz = nsd*sd.
 %
-%   See also VISLIB.GRAD2_RESPONSE, VISLIB.STEERABLE_KERNELS.
+%   See also vislab.lib.GRAD2_RESPONSE, vislab.lib.STEERABLE_KERNELS.
 
     scale45  = 0.22;                 % 45-deg energy for accurate steerability
     sz       = nsd * sd;

@@ -1,6 +1,6 @@
 function spatial_dv = dv_spatial(patch_a, patch_b, patch_size)
 % DV_SPATIAL  Spatial-pattern-similarity decision variable between two patches.
-%   spatial_dv = nat_stat_bayes.dv_spatial(patch_a, patch_b, patch_size)
+%   spatial_dv = vislab.nat_stat_bayes.dv_spatial(patch_a, patch_b, patch_size)
 %
 %   Compares the spatial layout of two patches by the best normalized
 %   cross-correlation over all circular shifts: each patch is zero-meaned and
@@ -17,7 +17,7 @@ function spatial_dv = dv_spatial(patch_a, patch_b, patch_size)
 %   Output
 %     spatial_dv - 1 / (max shifted normalized cross-correlation).
 %
-%   See also NAT_STAT_BAYES.DV_POWER, NAT_STAT_BAYES.XCORR_PATCHES.
+%   See also vislab.nat_stat_bayes.DV_POWER, vislab.nat_stat_bayes.XCORR_PATCHES.
 
     p1 = normalize_patch(patch_a);
     p2 = normalize_patch(patch_b);

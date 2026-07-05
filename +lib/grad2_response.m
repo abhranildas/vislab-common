@@ -1,6 +1,6 @@
 function [magnitude, orientation] = grad2_response(patch, sd, nsd)
 % GRAD2_RESPONSE  Second-derivative steerable response (magnitude & orientation).
-%   [magnitude, orientation] = vislib.grad2_response(patch, sd, nsd)
+%   [magnitude, orientation] = vislab.lib.grad2_response(patch, sd, nsd)
 %
 %   Convolves the patch with the 0/45/90-degree second-derivative-of-Gaussian
 %   basis and analytically steers to the orientation of maximum |response| at
@@ -16,11 +16,11 @@ function [magnitude, orientation] = grad2_response(patch, sd, nsd)
 %     magnitude   - steered |response| magnitude map (cropped).
 %     orientation - orientation of maximum response, degrees (cropped).
 %
-%   See also VISLIB.GAUSS_DERIV2_KERNELS, VISLIB.STEERABLE_GRAD_RESPONSE.
+%   See also vislab.lib.GAUSS_DERIV2_KERNELS, vislab.lib.STEERABLE_GRAD_RESPONSE.
 
     [sz, ~] = size(patch);
     crop = floor(sd * nsd / 2 + 1);
-    [k0, k45, k90] = vislib.gauss_deriv2_kernels(sd, nsd);
+    [k0, k45, k90] = vislab.lib.gauss_deriv2_kernels(sd, nsd);
     r0  = conv2(patch, k0,  'same');
     r45 = conv2(patch, k45, 'same');
     r90 = conv2(patch, k90, 'same');
