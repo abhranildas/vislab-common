@@ -20,10 +20,11 @@ function border = dv_border(patch_a, patch_b, patch_size, direction, sd, nsd, sh
 %   Output
 %     border - 1x3 vector [border_energy, off_border_energy, cross_correlation].
 %
-%   NOTE: border(2) uses '/' (matrix right-division), i.e. a single pooled ratio
-%   of the away-from-border rows, NOT an element-wise mean of ratios. This is
-%   preserved exactly from the original Rb.m; the intent is ambiguous (the "/"
-%   may have been meant as "./"), so it is flagged for Geisler rather than changed.
+%   NOTE: border(2) is the mean of the element-wise log edge-energy ratios ('./')
+%   away from the border. The original Rb.m used '/' (matrix right-division = one
+%   pooled least-squares ratio); Geisler confirmed (2026-07) it was meant to be
+%   './' and corrected it in his fixed Rb.m, so we use './'. This is
+%   behaviour-changing vs the preprint artifacts (affects the border DV dbndb/dbndbc).
 %
 %   See also vislab.nat_stat_bayes.XCORR_PATCHES, vislab.lib.DERIV_GAUSS1_KERNELS.
 
@@ -51,9 +52,9 @@ function border = dv_border(patch_a, patch_b, patch_size, direction, sd, nsd, sh
     % (1) edge-energy ratio at the join (rows patch_size, patch_size+1)
     border(1) = log(sum(sum_h(patch_size:patch_size+1)) / sum(sum_v(patch_size:patch_size+1)));
 
-    % (2) average away from the border  ('/' is mrdivide — preserved; see NOTE above)
-    av1 = mean(log(sum_h(1:patch_size-1) / sum_v(1:patch_size-1)));
-    av2 = mean(log(sum_h(patch_size+1:psz2) / sum_v(patch_size+1:psz2)));
+    % (2) mean element-wise log-ratio away from the border  ('./' — Geisler-confirmed; see NOTE)
+    av1 = mean(log(sum_h(1:patch_size-1) ./ sum_v(1:patch_size-1)));
+    av2 = mean(log(sum_h(patch_size+1:psz2) ./ sum_v(patch_size+1:psz2)));
     border(2) = (av1 + av2) / 2;
 
     % (3) spatial cross-correlation of the two patches
