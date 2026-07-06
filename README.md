@@ -7,9 +7,9 @@ one place.
 
 This repo contains two things:
 - **`+vislab/`** — the shared MATLAB namespace package (`+lib`, `+nat_stat_bayes`, `+psychframework`).
-- **`data/`** — the shared data store. The small colour-transform `.mat` files are kept in git; the large
-  image/texture datasets (~23 GB total) are **not** (too large for GitHub) — obtain them separately / sync
-  via OneDrive. See below.
+- **`data/`** — the shared data store. The colour-transform `.mat` files and the texture sheets are kept in
+  git; only the large natural-image set (~19 GB) and the 3.7 GB derived CDFs are **not** (too large for
+  GitHub) — obtain those separately / sync via OneDrive. See below.
 
 ## Package
 
@@ -38,11 +38,11 @@ addpath(vislab_common_dir);   % exposes vislab.lib.*, vislab.nat_stat_bayes.*, v
 
 ## Shared data store (`data/`)
 
-The `data/` folder holds the shared assets. The small calibration files — the two colour transforms
-(`cps_rgb2lms.mat`, `cps_lms2abr_otf.mat`) and `nat_im_eff_coding.mat` — **are committed to git**, so a
-fresh clone can run the colour transforms out of the box. The large assets are **gitignored** (too big for
-GitHub) and obtained manually / synced via OneDrive: the natural-image set (`CPS natural images/`, ~19 GB),
-the texture sheets (`textures/`), and the ~3.7 GB `nat_im_cdfs.mat`.
+The `data/` folder holds the shared assets. **Committed to git:** the two colour transforms
+(`cps_rgb2lms.mat`, `cps_lms2abr_otf.mat`), `nat_im_eff_coding.mat`, and the full `textures/` tree
+(~379 MB: Brodatz, Fabric, Pertex, VisTex, McGill, …) — so a fresh clone can run the colour transforms and
+every texture dataset out of the box. **Gitignored** (too big for GitHub, obtained manually / synced via
+OneDrive): the natural-image set (`CPS natural images/`, ~19 GB) and the ~3.7 GB `nat_im_cdfs.mat`.
 
 The two colour transforms are loaded automatically the first time they're used (cached thereafter) —
 **callers just call the function; they do not load the matrix**:

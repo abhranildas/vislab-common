@@ -22,8 +22,8 @@ hub) and is referenced from each project's README.
     PTB experiments)        PTB experiments + models)    proximity-trained DVs + segmentation)
 
    vislab-common/data/  (natural images, texture sheets, colour transforms, large CDFs) —
-                 shared data store inside vislab-common (small transforms in git, large sets
-                 gitignored); referenced by each repo's config.
+                 shared data store inside vislab-common (transforms + textures in git; ~19 GB
+                 images + 3.7 GB CDFs gitignored); referenced by each repo's config.
 ```
 
 ## Components
@@ -59,9 +59,10 @@ out to be shared. A project's own local `+lib` (`lib.*`) is a separate, project-
 
 ### data/ (shared data store, inside vislab-common)
 Natural images (`CPS natural images/`), texture sheets (`textures/`), the colour transforms, and large
-derived data (e.g. natural-image CDFs). The small colour-transform `.mat` files are committed to git; the
-large datasets and the 3.7 GB CDFs are gitignored (obtained manually / synced via OneDrive). Each repo's
-`config.m` points at this store via a single data-root path (`../vislab-common/data`).
+derived data (e.g. natural-image CDFs). The colour-transform `.mat` files and the `textures/` tree are
+committed to git; only the ~19 GB natural-image set and the 3.7 GB CDFs are gitignored (obtained manually /
+synced via OneDrive). Each repo's `config.m` points at this store via a single data-root path
+(`../vislab-common/data`).
 
 ## Consumption model
 
@@ -70,8 +71,8 @@ large datasets and the 3.7 GB CDFs are gitignored (obtained manually / synced vi
   `vislab-common` (the package's parent) on the path (so `vislab.*` resolves); it auto-clones the repo
   there if it's missing (needs git + network) — so a standalone project clone works after running `setup`.
 - **IntClassNorm + gx2 = installed toolboxes** (see above).
-- **data = shared store** at `vislab-common/data`, referenced by config. Small colour transforms are in
-  git; the large image/texture datasets and the 3.7 GB CDFs are gitignored (not on GitHub).
+- **data = shared store** at `vislab-common/data`, referenced by config. Colour transforms + textures are
+  in git; the ~19 GB natural-image set and the 3.7 GB CDFs are gitignored (not on GitHub).
 
 ## Adding a new project
 1. Ensure `vislab-common` sits next to the repo (each `setup.m` auto-fetches it if missing).
