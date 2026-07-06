@@ -8,6 +8,11 @@ octave-workspace
 .DS_Store
 Thumbs.db
 desktop.ini
-# Shared data store (~23 GB): natural images, texture sheets, colour transforms.
-# Obtained manually / synced via OneDrive -- never committed to git (too large for GitHub).
-/data/
+# Shared data store (vislab-common/data). Keep the small calibration/derived .mat
+# files in git (so a fresh clone can run the colour transforms), but ignore the
+# large image/texture datasets -- those are obtained separately / synced via OneDrive.
+# (GitHub rejects files >100 MB.) Default to ignoring, then re-include small .mat files:
+/data/*
+!/data/*.mat
+# ...except the ~3.7 GB derived CDFs, which is too large for git:
+/data/nat_im_cdfs.mat
