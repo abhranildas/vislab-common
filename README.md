@@ -39,11 +39,12 @@ addpath(vislab_common_dir);   % exposes vislab.lib.*, vislab.nat_stat_bayes.*, v
 ## Shared data store (`data/`)
 
 The `data/` folder holds the shared assets. **Committed to git:** the two colour transforms
-(`cps_rgb2lms.mat`, `cps_lms2abr_otf.mat`), `nat_im_eff_coding.mat`, and the full `textures/` tree
-(~379 MB: Brodatz, Fabric, Pertex, VisTex, McGill, …) — so a fresh clone can run the colour transforms and
-every texture dataset out of the box. **Gitignored** (too big for GitHub, obtained manually / synced via
-OneDrive): the natural-image set (`CPS natural images/`, ~19 GB) and the ~3.7 GB `nat_im_cdfs.mat`.
-
+(`cps_rgb2lms.mat`, `cps_lms2abr_otf.mat`), `nat_im_eff_coding.mat`, the full `textures/` tree
+(~379 MB: Brodatz, Fabric, Pertex, VisTex, McGill, …), and a **12-image demo subset** inside
+`CPS natural images/`. This means a fresh clone can run the colour transforms, every texture dataset,
+and train the natural-image pipeline out of the box. **Gitignored** (too big for GitHub, obtained
+manually / synced via OneDrive): the rest of the full natural-image set (~19 GB) and the ~3.7 GB
+`nat_im_cdfs.mat`.
 The two colour transforms are loaded automatically the first time they're used (cached thereafter) —
 **callers just call the function; they do not load the matrix**:
 - `vislab.lib.rgb2lms(img)` — camera-RGB → LMS, using `data/cps_rgb2lms.mat` (var `lms`).
