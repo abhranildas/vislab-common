@@ -7,9 +7,7 @@ one place.
 
 This repo contains two things:
 - **`+vislab/`** — the shared MATLAB namespace package (`+lib`, `+nat_stat_bayes`, `+psychframework`).
-- **`data/`** — the shared data store. The colour-transform `.mat` files and the texture sheets are kept in
-  git; only the large natural-image set (~19 GB) and the 3.7 GB derived CDFs are **not** (too large for
-  GitHub) — obtain those separately / sync via OneDrive. See below.
+- **`data/`** — the shared data store (see the **Shared data store** section below for contents).
 
 ## Package
 
